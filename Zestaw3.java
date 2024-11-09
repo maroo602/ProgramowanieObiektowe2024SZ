@@ -68,6 +68,6 @@ public class Zestaw3 {
 //        trojkatpascala(2);
 //        czyPalindrom(56261);
 //        trojkiPitagorejskie(100);
-          liczbypierwsze(10);
+//        liczbypierwsze(10);
     }
 }
