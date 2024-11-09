@@ -2,7 +2,7 @@ import java.util.Arrays;
 
 import static java.lang.Math.*;
 public class Zestaw4 {
-    //Zadanie1
+    
     public static int[] generujTablice(int n,int minWartosc,int maxWartosc){
         int[] tab = new int[n];
         for(int i = 0;i < n;i++){
@@ -14,7 +14,7 @@ public class Zestaw4 {
         System.out.println(Arrays.toString(tab));
         return tab;
     }
-    //Zadanie2
+    
     public static void wypiszTablice(int[] tab,int n,int m){
         for(int i = 0; i < n;i++){
             for(int j = 0; j < m;j++){
@@ -28,7 +28,7 @@ public class Zestaw4 {
             System.out.println();
         }
     }
-    //Zadanie7
+    
     public static void generujZakres(int n,int minWartosc,int maxWartosc){
         double[] tab = new double[n];
         double roznica = (maxWartosc - minWartosc);
@@ -135,6 +135,6 @@ public class Zestaw4 {
         //ileUjemnych(generujTablice(10,-10,10));
         //ileZerowych(generujTablice(10,0,2));
         //ileMaxymalnych(generujTablice(10,0,5));
-        ileMinimalnych(generujTablice(10,1,5));
+        //ileMinimalnych(generujTablice(10,1,5));
     }
 }
