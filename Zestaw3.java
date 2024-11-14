@@ -254,3 +254,73 @@ public static boolean czyp(int n){
         return false;
 
 }
+public static void nwd(int n, int m) {
+    int max = Math.max(n, m);
+    for (int i = max; i >= 1; i--) {
+        if (n % i == 0 && m % i == 0) {
+            System.out.println(i + " to NWD");
+            break;
+        }
+    }
+
+}
+public static int[] tablica(){
+        Scanner scanner1 = new Scanner(System.in);
+        System.out.println("Podaj n:");
+        int n = scanner1.nextInt();
+        int[] tablica = new int[n];
+        System.out.println("Podaj "+n+" liczb:");
+        for(int i=0;i<n;i++) {
+            tablica[i] = scanner1.nextInt();
+        }
+        return tablica;
+}
+    public static void main(String[] args) {
+//        trojka(10);
+//        kwadrat(10);
+//        delta(10);
+//        natural(11);
+//        podzielne(2, 4);
+//        piramida(5, 2);
+//        silnia(5);
+//        silniap(6);
+//        silniam(10,3);
+//        newton(10,5);
+//        fibo(10);
+//        suman(5);
+//        sumap(5);
+//        sumanp(5);
+//        sumakwn(5);
+//        sumasn(5);
+//        sumaon(5);
+//        palindrom("kaja");
+//        pascal(5);
+
+//        if(palindroml(505)){
+//            System.out.println(true);
+//        }
+//        else{
+//            System.out.println(false);
+//        }
+
+//        Scanner scanner1= new Scanner(System.in);
+//        System.out.println("Podaj liczbe:");
+//        int n=scanner1.nextInt();
+//        if(doskonala(n)){
+//            System.out.println(true);
+//        }
+//        else{
+//            System.out.println(false);
+//        }
+
+
+//        if (czyp(83)) {
+//            System.out.println(true);
+//        } else {
+//            System.out.println(false);
+//        }
+//        nwd(125,75);
+        int[] tablica2=tablica();
+        System.out.println(Arrays.toString(tablica2));
+    }
+}
