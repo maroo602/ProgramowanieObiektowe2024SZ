@@ -101,3 +101,37 @@ public class Main {
         }
 
     }
+        public static int podciag(int[] tab){
+            int res = 0;
+            int licznik = 1;
+            for(int i = 1;i < tab.length; i++){
+                if(tab[i] < tab[i-1]){
+                    licznik++;
+                }
+                else{
+                    licznik = 1;
+                }
+                if(licznik > res){
+                    res = licznik;
+                }
+            }
+            return res;
+        }
+        public static int podciag(int[] tab,int r){
+            int res = 0;
+            int licznik = 1;
+            for(int i = 1;i < tab.length; i++){
+                if(tab[i-1] - tab[i] == r){
+                    licznik++;
+                }
+                else{
+                    licznik = 1;
+                }
+                if(licznik > res){
+                    res = licznik;
+                }
+            }
+            return res;
+        }
+        int[] tab = {5,3,1,8,5,2,1,0,3};
+        System.out.println(podciag(tab,2));
