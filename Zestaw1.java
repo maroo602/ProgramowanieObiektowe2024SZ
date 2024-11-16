@@ -135,3 +135,14 @@ public class Main {
         }
         int[] tab = {5,3,1,8,5,2,1,0,3};
         System.out.println(podciag(tab,2));
+public class CiagArytmetyczny {
+    public static void main(String[] args) {
+        int pierwszaLiczba = 2;  // pierwsza liczba w ciągu
+        int roznica = 3;         // różnica między kolejnymi liczbami
+        int iloscElementow = 10; // liczba elementów w ciągu
+
+        for (int i = 0; i < iloscElementow; i++) {
+            System.out.print(pierwszaLiczba + (i * roznica) + " ");
+        }
+    }
+}
