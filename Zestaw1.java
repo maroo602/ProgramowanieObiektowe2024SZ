@@ -201,4 +201,75 @@ public class Collatz {
         return minMax;
     }
 }
+public class CiagArytmetycznyM {
+    public static void main(String[] args) {
+        int n = 10; // liczba elementów
+        int m = 3;  // rodzaj ciągu
+        int a1 = 5; // pierwszy wyraz ciągu
+        int[] r = {2, 3, 4}; // tablica różnic
+
+        int[] ciag = generujCiagArytmetycznyM(n, m, a1, r);
+        for (int liczba : ciag) {
+            System.out.print(liczba + " ");
+        }
+    }
+
+    public static int[] generujCiagArytmetycznyM(int n, int m, int a1, int[] r) {
+        int[] ciag = new int[n];
+        ciag[0] = a1;
+
+        for (int i = 1; i < n; i++) {
+            ciag[i] = ciag[i - 1] + r[(i - 1) % m];
+        }
+
+        return ciag;
+    }
+}
+public class CiagArytmetyczny {
+    public static void main(String[] args) {
+        int[] ciag = {2, 5, 8, 11, 14}; // przykładowy ciąg
+
+        boolean wynik = czyCiagArytmetyczny(ciag);
+        System.out.println("Czy ciąg jest arytmetyczny? " + wynik);
+    }
+
+    public static boolean czyCiagArytmetyczny(int[] ciag) {
+        if (ciag.length < 2) {
+            return true; // Ciąg z jednym lub zerem elementów jest arytmetyczny
+        }
+
+        int roznica = ciag[1] - ciag[0];
+
+        for (int i = 1; i < ciag.length; i++) {
+            if (ciag[i] - ciag[i - 1] != roznica) {
+                return false;
+            }
+        }
+        return true;
+    }
+}
+public class CiagArytmetycznyM {
+    public static void main(String[] args) {
+        int[] ciag = {2, 5, 9, 14, 20, 27}; // przykładowy ciąg
+        int m = 2;                         // rodzaj ciągu
+        int[] r = {3, 4};                  // tablica różnic
+
+        boolean wynik = czyCiagArytmetycznyM(ciag, m, r);
+        System.out.println("Czy ciąg jest arytmetyczny m rodzaju? " + wynik);
+    }
+
+    public static boolean czyCiagArytmetycznyM(int[] ciag, int m, int[] r) {
+        if (ciag.length < 2) {
+            return true; // Ciąg z jednym lub zerem elementów jest arytmetyczny
+        }
+
+        for (int i = 1; i < ciag.length; i++) {
+            int expectedDifference = r[(i - 1) % m];
+            if (ciag[i] - ciag[i - 1] != expectedDifference) {
+                return false;
+            }
+        }
+        return true;
+    }
+}
 
