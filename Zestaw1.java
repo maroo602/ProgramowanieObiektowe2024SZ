@@ -146,3 +146,59 @@ public class CiagArytmetyczny {
         }
     }
 }
+public class Collatz {
+    public static void main(String[] args) {
+        int startLiczba = 10;  // początkowa liczba sekwencji
+        int iloscLiczb = 15;   // liczba elementów do wypisania
+
+        wypiszCollatz(startLiczba, iloscLiczb);
+    }
+
+    public static void wypiszCollatz(int c, int n) {
+        System.out.print(c + " ");
+        int liczba = c;
+        for (int i = 1; i < n; i++) {
+            if (liczba % 2 == 0) {
+                liczba /= 2;
+            } else {
+                liczba = 3 * liczba + 1;
+            }
+            System.out.print(liczba + " ");
+        }
+    }
+}
+public class Collatz {
+    public static void main(String[] args) {
+        int startLiczba = 10;  // początkowa liczba sekwencji
+        int iloscLiczb = 15;   // liczba elementów do wygenerowania
+
+        int[] wyniki = znajdzMinMaxCollatz(startLiczba, iloscLiczb);
+        System.out.println("min= " + wyniki[0] + " max= " + wyniki[1]);
+    }
+
+    public static int[] znajdzMinMaxCollatz(int c, int n) {
+        int[] minMax = new int[2];
+        int liczba = c;
+        minMax[0] = liczba; // początkowo ustaw min i max na pierwszą liczbę
+        minMax[1] = liczba;
+
+        for (int i = 0; i < n; i++) {
+            if (liczba % 2 == 0) {
+                liczba /= 2;
+            } else {
+                liczba = 3 * liczba + 1;
+            }
+
+            if (liczba < minMax[0]) {
+                minMax[0] = liczba;
+            }
+
+            if (liczba > minMax[1]) {
+                minMax[1] = liczba;
+            }
+        }
+
+        return minMax;
+    }
+}
+
