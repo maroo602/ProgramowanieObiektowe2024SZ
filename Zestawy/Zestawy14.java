@@ -2,7 +2,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 import java.util.Arrays;
-public class Main {
+public class Zestawy14 {
     public static void wypiszimie(String imie, String nazwisko) {
         System.out.println(imie + " " + nazwisko);
     }
