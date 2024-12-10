@@ -1,55 +1,81 @@
 public class Main {
-
-
     public static void main(String[] args) {
-        System.out.println("PRODUKT");
-        Produkt p1= new Produkt("Koło", "100",12);
-        Produkt p2= new Produkt("Felga", "50", 50);
-        Produkt p3= new Produkt("Sruba", "1",1);
-//        p1.wyswietlInformacje();
-//        p1.dodajDoMagazynu(12);
-//        System.out.println();
-//        p2.wyswietlInformacje();
-//        p2.usunZMagazynu(10);
-//        System.out.println();
-//        p3.wyswietlInformacje();
-//        p3.usunZMagazynu(5);
-//        System.out.println();
-        System.out.println();
-        System.out.println("KOSZYK");
+        // Tworzenie produktów
+        Produkt kolo = new Produkt("Kolo", 150.50, 100);
+        Produkt felga = new Produkt("Felga", 300.20, 50);
+        Produkt olej = new Produkt("Olej", 50.0, 30);
 
-        KoszykZakupowy koszyk=new KoszykZakupowy();
-        p1.wyswietlInformacje();
-        System.out.println();
-        koszyk.dodajProdukt(p1, 5);
-        System.out.println();
-        p2.wyswietlInformacje();
-        System.out.println();
-        koszyk.dodajProdukt(p2, 6);
-        System.out.println();
-        p3.wyswietlInformacje();
-        System.out.println();
-        koszyk.dodajProdukt(p3, 7);
-        System.out.println();
+        // Wyświetlanie informacji o produktach
+        System.out.println("Test: Wyświetlanie produktów:");
+        kolo.wyswietlInformacje();
+        felga.wyswietlInformacje();
+        olej.wyswietlInformacje();
+
+        // Modyfikacja stanów magazynowych
+        System.out.println("\nTest: Dodawanie do magazynu:");
+        kolo.dodajDoMagazynu(20);
+        kolo.wyswietlInformacje();
+
+        System.out.println("\nTest: Usuwanie z magazynu:");
+        kolo.usunZMagazynu(50);
+        kolo.wyswietlInformacje();
+
+        // Tworzenie sklepu
+        Sklep sklep = new Sklep();
+        sklep.dodajProdukt(kolo);
+        sklep.dodajProdukt(felga);
+        sklep.dodajProdukt(olej);
+
+        System.out.println("\nTest: Wyświetlanie oferty sklepu:");
+        sklep.wyswietlOferty();
+
+        System.out.println("\nTest: Wyszukiwanie produktu:");
+        Produkt wyszukany = sklep.wyszukajProdukt("Banan");
+        if (wyszukany != null) {
+            wyszukany.wyswietlInformacje();
+        } else {
+            System.out.println("Produkt nie znaleziony.");
+        }
+
+        // Koszyk zakupowy
+        KoszykZakupowy koszyk = new KoszykZakupowy();
+        System.out.println("\nTest: Dodawanie produktów do koszyka:");
+        koszyk.dodajProdukt(kolo, 10);
+        koszyk.dodajProdukt(felga, 5);
+        koszyk.dodajProdukt(olej, 50); // Niewystarczający stan
+
+        System.out.println("\nTest: Wyświetlanie zawartości koszyka:");
         koszyk.wyswietlZawartoscKoszyka();
-        System.out.println();
-        System.out.println("Całkowita wartość: " + koszyk.obliczCalkowitaWartosc() + "zł");
-        System.out.println();
+
+        System.out.println("\nTest: Obliczanie wartości koszyka:");
+        System.out.println("Łączna wartość koszyka: " + koszyk.obliczCalkowitaWartosc() + " zł");
+
+        // Zamówienie
         Zamowienie zamowienie = new Zamowienie(koszyk);
+        System.out.println("\nTest: Wyświetlanie zamówienia:");
         zamowienie.wyswietlZamowienie();
-        System.out.println();
-        zamowienie.ustawStatusZamowienia("W trakcie realizacji");
-        System.out.println();
+
+        System.out.println("\nTest: Zmiana statusu zamówienia:");
+        zamowienie.ustawStatusZamowienia("W realizacji");
         zamowienie.wyswietlZamowienie();
-        System.out.println();
-        KoszykZakupowy koszyk1= new KoszykZakupowy();
-        koszyk1.dodajProdukt(p1,5);
-        koszyk1.dodajProdukt(p2,6);
-        System.out.println();
-        Zamowienie zamowienie1 = new Zamowienie(koszyk1);
-        Klient klient = new Klient("Koksik", "Zakupowicz");
-        klient.dodajZamowienie(zamowienie1);
+
+        // Klient
+        Klient klient = new Klient("Jan", "Kowalski");
+        klient.dodajZamowienie(zamowienie);
+
+        System.out.println("\nTest: Wyświetlanie historii zamówień klienta:");
         klient.wyswietlHistorieZamowien();
 
+        System.out.println("\nTest: Obliczanie łącznego kosztu zamówień klienta:");
+        System.out.println("Łączny koszt: " + klient.obliczLacznyKosztZamowien() + " zł");
+
+        // Płatność
+        Platnosc platnosc = new Platnosc(koszyk.obliczCalkowitaWartosc());
+        System.out.println("\nTest: Status płatności przed zapłatą:");
+        System.out.println("Status płatności: " + platnosc.getStatusPlatnosci());
+
+        platnosc.zaplac();
+        System.out.println("\nTest: Status płatności po zapłacie:");
+        System.out.println("Status płatności: " + platnosc.getStatusPlatnosci());
     }
 }

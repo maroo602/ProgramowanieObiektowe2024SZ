@@ -7,7 +7,6 @@ public class KoszykZakupowy {
     public KoszykZakupowy() {
         produkty = new ArrayList<>();
         ilosci = new ArrayList<>();
-
     }
 
     public void dodajProdukt(Produkt produkt, int ilosc) {
@@ -15,18 +14,18 @@ public class KoszykZakupowy {
             produkty.add(produkt);
             ilosci.add(ilosc);
             produkt.usunZMagazynu(ilosc);
-            System.out.println("Dodano produkt: " + produkt.nazwa + " Ilosc: " + ilosc);
+            System.out.println("Dodano produkt: " + produkt.nazwa + " Ilość: " + ilosc);
         } else {
             System.out.println("Za mała ilość na magazynie.");
         }
     }
 
     public void wyswietlZawartoscKoszyka() {
-        System.out.println("Zawartość: ");
+        System.out.println("Zawartość koszyka:");
         for (int i = 0; i < produkty.size(); i++) {
             Produkt p = produkty.get(i);
             int ilosc = ilosci.get(i);
-            System.out.println("Produkt: " + p.nazwa + " Ilosc: " + ilosc);
+            System.out.println("Produkt: " + p.nazwa + " Ilość: " + ilosc);
         }
     }
 
@@ -35,9 +34,8 @@ public class KoszykZakupowy {
         for (int i = 0; i < produkty.size(); i++) {
             Produkt p = produkty.get(i);
             int ilosc = ilosci.get(i);
-            suma += Double.parseDouble(p.cena) * ilosc;
+            suma += p.cena * ilosc;  // Teraz cena jest typu double
         }
         return suma;
-
     }
 }

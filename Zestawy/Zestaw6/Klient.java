@@ -1,6 +1,5 @@
-import java.util.ArrayList;
-
-public class Klient {
+import java.util.*;
+class Klient {
     String imie;
     String nazwisko;
     public ArrayList<Zamowienie> zamowienia;
@@ -8,24 +7,26 @@ public class Klient {
     public Klient(String imie, String nazwisko) {
         this.imie = imie;
         this.nazwisko = nazwisko;
-        zamowienia = new ArrayList<>();
+        this.zamowienia = new ArrayList<>();
     }
 
-    public void dodajZamowienie(Zamowienie zamowienie){
+    public void dodajZamowienie(Zamowienie zamowienie) {
         zamowienia.add(zamowienie);
     }
-    public void wyswietlHistorieZamowien(){
+
+    public void wyswietlHistorieZamowien() {
         System.out.println("Klient: " + imie + " " + nazwisko);
-        System.out.println("Historia zamowien: ");
-        for(int i=0; i<zamowienia.size(); i++){
+        System.out.println("Historia zamówień:");
+        for (int i = 0; i < zamowienia.size(); i++) {
             zamowienia.get(i).wyswietlZamowienie();
         }
     }
-    public double obliczLaczyKosztZamowien(){
-        double lacznykoszt=0;
-        for(int i=0; i<zamowienia.size(); i++){
-            lacznykoszt+=;
+
+    public double obliczLacznyKosztZamowien() {
+        double lacznyKoszt = 0;
+        for (int i = 0; i < zamowienia.size(); i++) {
+            lacznyKoszt += zamowienia.get(i).koszykZakupowy.obliczCalkowitaWartosc();
         }
-        return lacznykoszt;
+        return lacznyKoszt;
     }
 }

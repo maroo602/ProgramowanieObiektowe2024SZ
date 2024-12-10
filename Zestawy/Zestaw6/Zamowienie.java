@@ -6,6 +6,7 @@ public class Zamowienie {
         this.statusZamowienia = "Przyjęte";
     }
     public void ustawStatusZamowienia(String nowy){
+
         this.statusZamowienia = nowy;
     }
     public void wyswietlZamowienie(){
