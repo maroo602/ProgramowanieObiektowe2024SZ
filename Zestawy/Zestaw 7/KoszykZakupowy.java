@@ -23,11 +23,15 @@ class KoszykZakupowy {
         produkty.remove(produkt);
     }
 
-    public double obliczCalkowitaWartosc() {
-        return produkty.entrySet().stream()
-                .mapToDouble(entry -> entry.getKey().getCena() * entry.getValue())
-                .sum();
+   public double obliczCalkowitaWartosc() {
+    double suma = 0;
+    for (Map.Entry<Produkt, Integer> entry : produkty.entrySet()) {
+        Produkt p = entry.getKey(); 
+        int ilosc = entry.getValue(); 
+        suma += p.getCena() * ilosc;  
     }
+    return suma;
+}
 
     @Override
     public String toString() {
