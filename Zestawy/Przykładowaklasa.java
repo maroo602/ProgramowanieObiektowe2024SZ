@@ -164,3 +164,86 @@ public class Main {
         }
     }
 }
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+
+class Osoba {
+    private String imie;
+    private String nazwisko;
+    private int wiek;
+    private String plec; // Pole przechowujące płeć: "Mężczyzna" lub "Kobieta"
+
+    public Osoba(String imie, String nazwisko, int wiek, String plec) {
+        this.imie = imie;
+        this.nazwisko = nazwisko;
+        this.wiek = wiek;
+        this.plec = plec;
+    }
+
+    public String getImie() {
+        return imie;
+    }
+
+    public String getNazwisko() {
+        return nazwisko;
+    }
+
+    public int getWiek() {
+        return wiek;
+    }
+
+    public String getPlec() {
+        return plec;
+    }
+
+    @Override
+    public String toString() {
+        return imie + " " + nazwisko + ", wiek: " + wiek + ", płeć: " + plec;
+    }
+}
+
+class Pracownik extends Osoba {
+    private String stanowisko;
+
+    public Pracownik(String imie, String nazwisko, int wiek, String plec, String stanowisko) {
+        super(imie, nazwisko, wiek, plec);
+        this.stanowisko = stanowisko;
+    }
+
+    public String getStanowisko() {
+        return stanowisko;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Tworzenie listy pracowników
+        List<Pracownik> pracownicy = new ArrayList<>();
+        pracownicy.add(new Pracownik("Jan", "Kowalski", 45, "Mężczyzna", "Programista"));
+        pracownicy.add(new Pracownik("Anna", "Nowak", 50, "Kobieta", "Projektant"));
+        pracownicy.add(new Pracownik("Piotr", "Zieliński", 38, "Mężczyzna", "Tester"));
+        pracownicy.add(new Pracownik("Maria", "Wiśniewska", 60, "Kobieta", "Manager"));
+
+        // Sortowanie najpierw po płci, a potem po wieku (rosnąco)
+        Collections.sort(pracownicy, new Comparator<Pracownik>() {
+            @Override
+            public int compare(Pracownik p1, Pracownik p2) {
+                // Porównanie płci
+                int plecCompare = p1.getPlec().compareTo(p2.getPlec());
+                if (plecCompare != 0) {
+                    return plecCompare; // Jeśli płci są różne, sortujemy po płci
+                }
+                // Jeśli płcie są takie same, sortujemy po wieku
+                return Integer.compare(p1.getWiek(), p2.getWiek());
+            }
+        });
+
+        // Wyświetlenie posortowanej listy
+        System.out.println("Posortowana lista pracowników:");
+        for (Pracownik pracownik : pracownicy) {
+            System.out.println(pracownik);
+        }
+    }
+}
