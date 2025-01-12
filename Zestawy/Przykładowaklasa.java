@@ -93,3 +93,74 @@ public class Main {
         System.out.println("Nowe wynagrodzenie: " + pracownik.getWynagrodzenie());
     }
 
+
+import java.util.ArrayList;
+import java.util.List;
+
+class Osoba {
+    private String imie;
+    private String nazwisko;
+    private int wiek; // Pole przechowujące wiek
+
+    public Osoba(String imie, String nazwisko, int wiek) {
+        this.imie = imie;
+        this.nazwisko = nazwisko;
+        this.wiek = wiek;
+    }
+
+    public String getImie() {
+        return imie;
+    }
+
+    public String getNazwisko() {
+        return nazwisko;
+    }
+
+    public int getWiek() {
+        return wiek;
+    }
+
+    @Override
+    public String toString() {
+        return imie + " " + nazwisko + ", wiek: " + wiek;
+    }
+}
+
+class Pracownik extends Osoba {
+    private String stanowisko;
+
+    public Pracownik(String imie, String nazwisko, int wiek, String stanowisko) {
+        super(imie, nazwisko, wiek);
+        this.stanowisko = stanowisko;
+    }
+
+    public String getStanowisko() {
+        return stanowisko;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Tworzenie listy pracowników
+        List<Pracownik> pracownicy = new ArrayList<>();
+        pracownicy.add(new Pracownik("Jan", "Kowalski", 45, "Programista"));
+        pracownicy.add(new Pracownik("Anna", "Nowak", 50, "Projektant"));
+        pracownicy.add(new Pracownik("Piotr", "Zieliński", 38, "Tester"));
+        pracownicy.add(new Pracownik("Maria", "Wiśniewska", 60, "Manager"));
+
+        // Szukanie najstarszego pracownika
+        Pracownik najstarszy = null;
+        for (Pracownik pracownik : pracownicy) {
+            if (najstarszy == null || pracownik.getWiek() > najstarszy.getWiek()) {
+                najstarszy = pracownik;
+            }
+        }
+
+        // Wyświetlenie najstarszego pracownika
+        if (najstarszy != null) {
+            System.out.println("Najstarszy pracownik: " + najstarszy);
+        } else {
+            System.out.println("Lista pracowników jest pusta.");
+        }
+    }
+}
